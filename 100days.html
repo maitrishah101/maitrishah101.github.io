@@ -10,6 +10,13 @@
 		<link rel="stylesheet" href="css/magnific-popup.min.css">
 		<link rel="stylesheet" href="css/animsition.min.css">
 		<link rel="stylesheet" href="css/style.css">
+		<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script> -->
+		<!-- <link rel="stylesheet" type="text/css" href="jquery.fancybox.min.css"> -->
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<link rel="stylesheet" href="/fancybox/source/jquery.fancybox.css?v=2.1.7" type="text/css" media="screen" />
+		<script type="text/javascript" src="/fancybox/source/jquery.fancybox.pack.js?v=2.1.7"></script>
+
+
 	</head>
 	<body id="index-page">
 		<div class="global-outer">
@@ -37,7 +44,18 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div id="works-grid">
-										<div class="gutter"></div><a class="works-item smooth-leave typography illustration">
+										<div class="gutter"></div><a class="works-item smooth-leave typography illustration fancybox">
+
+											<div class="picture">
+													<div class="content">
+														<div class="text">
+															<h2>Day 038 (6.19.17)</h2>
+															<ul>
+																<li>Stay Cool</li>
+															</ul>
+														</div>
+													</div><img src="img/Day038.jpg">
+												</div></a><a class="works-item smooth-leave typography branding fancybox">
 
 											<div class="picture">
 													<div class="content">
@@ -48,7 +66,7 @@
 															</ul>
 														</div>
 													</div><img src="img/Day037.jpg">
-												</div></a><a class="works-item smooth-leave typography branding">
+												</div></a><a class="works-item smooth-leave typography branding fancybox">
 
 											<div class="picture">
 													<div class="content">
@@ -450,7 +468,6 @@
 
 									</div>
 								</div>
-
 							</div>
 						</div>
 					</div>
@@ -459,5 +476,16 @@
 		</div>
 		<script src="js/plugins.min.js"></script>
 		<script src="js/functions.js"></script>
+		<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script src="jquery.fancybox.min.js"></script>
+
+		<!-- <script type="text/javascript">
+			$(document).ready(function() {
+			$(".fancybox").fancybox();
+			});
+		</script> -->
+
+
+
 	</body>
 </html>
