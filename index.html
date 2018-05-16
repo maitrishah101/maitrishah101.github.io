@@ -18,6 +18,8 @@
   	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=PT-Serif">
   	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Nunito">
   	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Karla">
+		<link href="https://fonts.googleapis.com/css?family=Yantramanav:400,700" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
   	<!-- Google Material Icons -->
   	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   	<!-- Font Awesome Icons -->
@@ -30,42 +32,110 @@
 
 	</head>
 
-	<body style="background-color:rgba(211,211,211,.8)">
 
 
-	<body id="index-page">
-		<div class="global-outer">
-			<div class="global-inner">
-				<header id="sidebar">
-					<!-- <div class="sidebar-inner"><a class="logo smooth-leave" href="index.html"><img src="img/name.png" alt="SO"></a> -->
-						<!-- <img src="img/name.png"style="width:190px;height:150px;"></img> -->
-						<p class="intro">UPDATE: WEBSITE IS UNDERGOING MAJOR CONSTRUCTION. In the meantime, feel free to look at some of my past work and connect with me on social media! </p>
-						<p class="intro"></p>
-						<nav>
-							<ul>
-								<!-- <li><a class="smooth-leave" href="blog-alt.html">Blog</a></li> -->
-								<li><a class="smooth-leave" href="orbit-v1.0/index.html">Work</a></li>
-								<li><a class="smooth-leave" href="about.html">About</a></li>
-								<li class="dropdown"><span>Design Work</span>
-									<ul>
-										<li><a class="smooth-leave" href="100days.html">100 Days of Illustration</a></li>
-										<li><a class="smooth-leave" href="serengetee.html">Serengetee Project</a></li>
-									</ul>
-								</li>
-							</ul>
-						</nav>
-						<!-- <div class="widgets-block">
-							<div class="widget filter" id="works-filter"> -->
-								<p class="title">Social (Click to Connect!)</p>
-								<ul style="list-style-type:none">
-									<li><a href="https://www.facebook.com/maitri.shah.13" target = "_blank">Facebook</a></li>
-									<li><a href="https://www.instagram.com/maitri_shah13/" target = "_blank">Instagram</a></li>
-									<li><a href="https://www.linkedin.com/in/maitri-shah/" target = "_blank">LinkedIn</a></li>
-									<li><a href="https://github.com/maitrishah101" target = "_blank">Github</a></li>
-								</ul>
-					</div>
-				</header>
-		<script src="js/plugins.min.js"></script>
-		<script src="js/functions.js"></script>
+
+	<body>
+
+		<div class="parent">
+
+		  <div id="name">Maitri Shah</div>
+
+
+
+
+			<div class="absolute1">
+				<div id="social-media">
+					<ul>
+						<li><a href="mailto:maitrishah@berkeley.edu" target="_top">email</a></li>
+						<li><a href="https://github.com/maitrishah101">//github//</a></li>
+						<li><a href="https://www.linkedin.com/in/maitri-shah/">linkedin</a></li>
+						<li><a href="https://medium.com/@maitri.shah101">//medium//</a></li>
+						<li><a href="">resume</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<!-- typewriter part -->
+			<div class="absolute2">
+				<h1>
+		  		<a href="" class="typewrite" data-period="2000"
+							data-type='[ "Hi! I&#39;m Maitri.", "I love computer science.", "I love economics.", "I love teaching.", "I love entrepreneurship.", "I love design.", "I love philanthropy.", "I love writing.", "I love making a difference.", "Scroll down to learn more about me." ]'>
+		    		<span class="wrap"></span>
+		  		</a>
+			  </h1>
+			</div>
+		</div>
+
+		<div class="absolute3">
+			<div id="menu">
+				<ul>
+					<li><a href="/">home</a></li>
+					<li><a href="/about/">projects</a></li>
+					<li><a href="/work/">about</a></li>
+				</ul>
+			</div>
+		</div>
+
+
 	</body>
 </html>
+
+ <script>
+		 var TxtType = function(el, toRotate, period) {
+		 			this.toRotate = toRotate;
+		 			this.el = el;
+		 			this.loopNum = 0;
+		 			this.period = parseInt(period, 10) || 2000;
+		 			this.txt = '';
+		 			this.tick();
+		 			this.isDeleting = false;
+		 	};
+
+		 	TxtType.prototype.tick = function() {
+		 			var i = this.loopNum % this.toRotate.length;
+		 			var fullTxt = this.toRotate[i];
+
+		 			if (this.isDeleting) {
+		 			this.txt = fullTxt.substring(0, this.txt.length - 1);
+		 			} else {
+		 			this.txt = fullTxt.substring(0, this.txt.length + 1);
+		 			}
+
+		 			this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+		 			var that = this;
+		 			var delta = 200 - Math.random() * 100;
+
+		 			if (this.isDeleting) { delta /= 2; }
+
+		 			if (!this.isDeleting && this.txt === fullTxt) {
+		 			delta = this.period;
+		 			this.isDeleting = true;
+		 			} else if (this.isDeleting && this.txt === '') {
+		 			this.isDeleting = false;
+		 			this.loopNum++;
+		 			delta = 500;
+		 			}
+
+		 			setTimeout(function() {
+		 			that.tick();
+		 			}, delta);
+		 	};
+
+		 	window.onload = function() {
+		 			var elements = document.getElementsByClassName('typewrite');
+		 			for (var i=0; i<elements.length; i++) {
+		 					var toRotate = elements[i].getAttribute('data-type');
+		 					var period = elements[i].getAttribute('data-period');
+		 					if (toRotate) {
+		 						new TxtType(elements[i], JSON.parse(toRotate), period);
+		 					}
+		 			}
+		 			// INJECT CSS
+		 			var css = document.createElement("style");
+		 			css.type = "text/css";
+		 			css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+		 			document.body.appendChild(css);
+		 	};
+ </script>

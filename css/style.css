@@ -25,8 +25,88 @@
 */
 
 body {
-    font-family: 'Roboto', 'Tahoma', 'Arial', sans-serif;
+    font-family: 'Yantramanav', sans-serif;
     font-weight: 300;
+    height:100%;
+    width:100%;
+    background-image:url("../img/me.jpg");/*your background image*/
+    background-repeat:no-repeat;/*we want to have one single image not a repeated one*/
+    background-size:cover;/*this sets the image to fullscreen covering the whole screen*/
+    /*css hack for ie*/
+    filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.image.jpg',sizingMethod='scale');
+    -ms-filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(src='image.jpg',sizingMethod='scale')";
+
+    font-weight: 300;
+    line-height: 1.8;
+    color: #212121;
+
+}
+
+* { color: #212121;;
+    text-decoration: none;
+    font-family: 'Yantramanav', sans-serif;
+  }
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+}
+
+#name {
+  font-family: 'Sacramento', cursive;
+  padding-top: 2%;
+  padding-left: 38%;
+  font-size: 400%;
+  color: white;
+  vertical-align: bottom;
+  margin-bottom: 0px;
+}
+
+#menu li a {
+    display: block;
+    color: #212121;
+    text-align: center;
+    text-decoration: none;
+    font-size: 150%;
+    padding-left:18px;
+}
+
+#social-media li a {
+    display: block;
+    color: #212121;
+    text-align: center;
+    text-decoration: none;
+    font-size: 150%;
+}
+
+div.absolute1 {
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+    /* border: 3px solid #8AC007; */
+    padding-left: 65%
+}
+
+div.absolute2 {
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+    padding-bottom: 10px;
+    padding-left: 65%;
+    /* border: 3px solid #8AC007; */
+}
+
+div.absolute3 {
+    position: absolute;
+    width: 100%;
+    /* border: 3px solid #8AC007; */
+    padding-left:40%;
 }
 
 .global-outer {
@@ -53,30 +133,6 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Lora', serif;
 }
 
-h1 {
-    font-size: 36px;
-}
-
-h2 {
-    font-size: 28px;
-}
-
-h3 {
-    font-size: 22px;
-}
-
-h4 {
-    font-size: 18px;
-}
-
-h5 {
-    font-size: 16px;
-}
-
-h6 {
-    font-size: 12px;
-}
-
 p {
     font-size: 15px;
     line-height: 1.8;
@@ -96,18 +152,13 @@ a {
 }
 
 a:hover, a:active, a:focus {
-    color: #32845e;
+    color: black;
     text-decoration: none;
     border-color: rgba(72, 186, 134, 0.3);
 }
 
 a:focus {
     outline: none;
-}
-
-ul {
-    font-size: 15px;
-    color: #6d6d6d;
 }
 
 blockquote {
