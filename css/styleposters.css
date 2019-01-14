@@ -1,0 +1,43 @@
+
+/*
+	1. Google Fonts Import
+*/
+@import 'https://fonts.googleapis.com/css?family=Roboto:300,400';
+@import 'https://fonts.googleapis.com/css?family=Lora:400,400italic';
+@import 'https://fonts.googleapis.com/css?family=Pacifico:300,400';
+
+
+.btf-heading, .tbf-heading {
+  margin-left: 5%;
+  color: #494848;
+}
+
+.description {
+  color: #636363;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  font-size: 110%;
+}
+
+.square {
+  width: 33vw;
+  height: 45vw;
+  object-fit: cover;
+  margin-left: 6%;
+  -webkit-transform:translate3d(0,0,0);
+
+}
+
+.column {
+  float: left;
+  width: 50%;
+  padding: 2%;
+}
+
+.name {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 600px;
+}
