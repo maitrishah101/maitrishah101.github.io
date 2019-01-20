@@ -8,6 +8,19 @@
 
 /* index.html */
 
+* {
+  color: #494848;
+  font-family: 'Questrial', sans-serif;
+}
+
+p {
+  font-size: 110%;
+}
+
+a {
+  color: #EABFB9;
+}
+
 .name {
   display: block;
   margin-left: auto;
