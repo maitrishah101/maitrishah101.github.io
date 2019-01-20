@@ -6,18 +6,13 @@
 @import 'https://fonts.googleapis.com/css?family=Lora:400,400italic';
 @import 'https://fonts.googleapis.com/css?family=Pacifico:300,400';
 
-
-.name {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 600px;
+* {
+  font-family: 'Questrial', sans-serif;
+  font-size: 110%;
 }
 
-.column {
-  float: left;
-  width: 25%;
-  padding: 2%;
+p {
+  font-size: 110%;
 }
 
 .small {
