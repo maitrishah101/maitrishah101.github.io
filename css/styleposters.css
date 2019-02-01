@@ -2,6 +2,10 @@
   font-family: 'Questrial', sans-serif;
 }
 
+a:hover {
+  color: #EABFB9;
+}
+
 p {
   font-size: 110%;
 }

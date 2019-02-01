@@ -15,6 +15,10 @@ p {
   font-size: 110%;
 }
 
+a:hover {
+  color: #EABFB9;
+}
+
 .small {
   width: 22vw;
   height: 22vw;

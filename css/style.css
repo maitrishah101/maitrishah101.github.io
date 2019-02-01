@@ -17,6 +17,10 @@ a {
   color: #EABFB9;
 }
 
+a:hover {
+  color: #EABFB9;
+}
+
 .name {
   display: block;
   margin-left: auto;

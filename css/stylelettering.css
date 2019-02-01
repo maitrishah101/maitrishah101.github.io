@@ -15,6 +15,10 @@
 
 }
 
+a:hover {
+  color: #EABFB9;
+}
+
 .column {
   float: left;
   width: 33.33%;
