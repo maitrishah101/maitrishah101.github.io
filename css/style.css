@@ -139,3 +139,7 @@ a:hover {
   margin-left: 5%;
   color: #494848;
 }
+
+img {
+    image-orientation: from-image;
+}
