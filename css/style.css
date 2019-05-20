@@ -140,6 +140,10 @@ a:hover {
   color: #494848;
 }
 
+.reading-heading, .travel-heading {
+  color: #EABFB9;
+}
+
 img {
     image-orientation: from-image;
 }
