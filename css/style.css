@@ -14,11 +14,11 @@
 }
 
 a {
-  color: #EABFB9;
+  color: #1DADA8;
 }
 
 a:hover {
-  color: #EABFB9;
+  color: #1DADA8;
 }
 
 .name {
@@ -28,12 +28,17 @@ a:hover {
   width: 600px;
 }
 
+.first-last-name {
+  color: pink;
+  size: 200px;
+}
+
 .me {
   width: 300px;
 }
 
 .club {
-  color: #EABFB9;
+  color: #1DADA8;
   text-decoration: underline;
 }
 
@@ -44,7 +49,7 @@ a:hover {
 }
 
 .link {
-  color: #EABFB9;
+  color: #1DADA8;
   margin-right: 5%;
   text-decoration: underline;
 }
@@ -123,7 +128,7 @@ a:hover {
 }
 
 .subtitle {
-  color: #EABFB9;
+  color: #1DADA8;
   text-align: center;
   margin-top: 2%;
 }
@@ -141,7 +146,7 @@ a:hover {
 }
 
 .reading-heading, .travel-heading {
-  color: #EABFB9;
+  color: #1DADA8;
 }
 
 img {
