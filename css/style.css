@@ -1,154 +1,60 @@
-
 /*
-	1. Google Fonts Import
+	Google Fonts Import
 */
-@import 'https://fonts.googleapis.com/css?family=Roboto:300,400';
-@import 'https://fonts.googleapis.com/css?family=Lora:400,400italic';
-@import 'https://fonts.googleapis.com/css?family=Pacifico:300,400';
-
-/* index.html */
+@import 'https://fonts.googleapis.com/css?family=Sacramento';
+@import 'https://fonts.googleapis.com/css?family=Lato:300,400,700,900';
 
 * {
-  color: #494848;
-  font-family: 'Questrial', sans-serif;
+  font-family: Lato;
+  color: #232323;
 }
 
-a {
-  color: #1DADA8;
+.title_text, .bio_heading, .content_title {
+  font-weight: 700;
 }
 
-a:hover {
-  color: #1DADA8;
-}
-
-.name {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 600px;
-}
-
-.first-last-name {
-  color: pink;
-  size: 200px;
-}
-
-.me {
-  width: 300px;
-}
-
-.club {
-  color: #1DADA8;
-  text-decoration: underline;
-}
-
-.bio {
-  color: #636363;
-  width: 75%;
-  margin-left: 15%;
-}
-
-.link {
-  color: #1DADA8;
-  margin-right: 5%;
-  text-decoration: underline;
-}
-
-.column1-index {
-  float: left;
-  width: 25%;
-  padding: 5%;
-}
-
-.column1-1-index {
-  float: left;
-  width: 70%;
-  padding: 3.5%;
-}
-
-
-.work-heading {
-  margin-left: 5%;
-  color: #494848;
-}
-
-.column2-index {
-  float: left;
-  width: 33.33%;
-  padding: 5%;
-}
-
-.amazon, .workday, .kiwi {
-  width: 80%;
-  /* width: 25vw;
-  height: 15vw; */
-  object-fit: cover;
-
-}
-
-/* .amazon {
-  margin-left: 20%;
-}
-
-.kiwi {
-  margin-right: 30%;
-} */
-
-.projects-heading {
-  margin-left: 5%;
-  color: #494848;
-}
-
-.column3-index {
-  float: left;
-  width: 33.33%;
-  padding: 5%;
-}
-
-.swe, .girls_who_code, .ace-coding {
-  width: 80%;
-  width: 25vw;
-  height: 15vw;
-  object-fit: cover;
-}
-
-.design-heading, .hobbies-heading {
-  margin-left: 5%;
-  color: #494848;
-}
-
-.column4-index {
-  float: left;
-  width: 33.33%;
-  padding: 5%;
-}
-
-.one-hundred-days {
-  margin-left: 20%;
-}
-
-.subtitle {
-  color: #1DADA8;
-  text-align: center;
+.content_title {
   margin-top: 2%;
+  color: #3A3A3A;
 }
 
-.one-hundred-days, .forum, .lettering {
-  width: 80%;
-  width: 25vw;
-  height: 15vw;
-  object-fit: cover;
+.content_subheading {
+  color: #4B4B4B;
+  margin-top: 0.5%;
 }
 
-.hobbies-heading {
-  margin-left: 5%;
-  color: #494848;
+.bio_links {
+  color: #3A3A3A;
 }
 
-.reading-heading, .travel-heading {
-  color: #1DADA8;
+.bio_links:hover {
+ text-decoration: none;
+ color:#3E7A96;
 }
 
-img {
-    image-orientation: from-image;
+.bio_heading {
+  font-size: 30px;
+}
+
+/* Content */
+.content {
+  background-color: white;
+  padding: 10px;
+}
+
+.column_work, .column_design, .column_hobbies, .column_projects {
+  /* float: left; */
+  width: 25%;
+  /* display: none; /* Hide columns by default */ */
+}
+
+.links, .links:hover, .title_links:hover {
+  color:#3E7A96;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.title_links {
+  color: #4B4B4B;
+  font-weight: 700;
 }
