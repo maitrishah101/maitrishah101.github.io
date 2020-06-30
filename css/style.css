@@ -25,6 +25,8 @@
 
 .bio_links {
   color: #3A3A3A;
+  text-decoration: none;
+  font-weight: 700;
 }
 
 .bio_links:hover {
