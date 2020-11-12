@@ -1,0 +1,30 @@
+@import 'https://fonts.googleapis.com/css2?family=Karla';
+
+div.bio {
+    margin-top:"15%";
+}
+
+a.bio {
+    font-family: "Karla";
+    font-weight: 700;
+    font-size: medium;
+    color: #7599AA;
+    text-decoration: none;
+}
+
+a.bio:hover {
+    color: #E4A79C;
+}
+
+img.social {
+    margin-right: 4%;
+}
+
+@media only screen and (max-width: 700px) { 
+    img.social {
+        margin-top: 5%;
+        margin-right: 8%;
+        width: 10%;
+        height: 10%;
+    }
+}

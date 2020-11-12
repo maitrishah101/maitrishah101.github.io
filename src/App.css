@@ -1,0 +1,72 @@
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 3%;
+}
+
+.container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0% auto;
+}
+
+.profilepic {
+  object-fit: contain;
+  max-width: 700px;
+  max-height: 700px;
+  width: 100%;
+  height: 100%;
+}
+
+.profilepicwrapper {
+  width: 30%;
+}
+
+@media only screen and (max-width: 700px) {  
+  .container {
+    width: 100%;
+    max-width: 500px;
+    margin: 0% auto;
+  }
+  .flex-container {
+    display: inline;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 3%;
+  } 
+
+  .profilepic {
+    object-fit: contain;
+    max-width: 500px;
+    max-height: 500px;
+    width: 50%;
+    height: 50%;
+    margin-left: 25%;
+  }
+
+  .profilepicwrapper {
+    width: 100%;
+    margin: 0% auto;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+
+@media only screen and (min-width: 1300px) {
+  p {
+    font-size: large !important; 
+  }
+
+  a {
+    font-size: large !important;
+  }
+
+  div {
+    font-size: large !important;
+  }
+}  

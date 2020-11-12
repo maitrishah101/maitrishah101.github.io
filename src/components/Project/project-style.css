@@ -1,0 +1,31 @@
+@import 'https://fonts.googleapis.com/css2?family=Karla';
+
+a.project {
+    font-family: "Karla";
+    font-size: medium;
+    text-decoration: none;
+    font-weight: 700;
+    color: #7599AA;
+    text-decoration: none;
+}
+
+a.project:hover {
+    color: #E4A79C;
+}
+
+p.project {
+    font-family: "Karla";
+    font-size: medium;
+    font-weight: 700;
+    margin-left: 10%;
+    color: black;
+    margin-right: 10%;  
+
+}
+
+@media only screen and (max-width: 700px) { 
+    p.project {
+        margin-bottom: 7%;
+    }
+
+}
