@@ -1,26 +1,26 @@
 {
   "files": {
     "main.css": "/maitrishah101.github.io/static/css/main.78b5ce33.chunk.css",
-    "main.js": "/maitrishah101.github.io/static/js/main.76fa0f5c.chunk.js",
-    "main.js.map": "/maitrishah101.github.io/static/js/main.76fa0f5c.chunk.js.map",
+    "main.js": "/maitrishah101.github.io/static/js/main.fc9f4116.chunk.js",
+    "main.js.map": "/maitrishah101.github.io/static/js/main.fc9f4116.chunk.js.map",
     "runtime-main.js": "/maitrishah101.github.io/static/js/runtime-main.4c0e0884.js",
     "runtime-main.js.map": "/maitrishah101.github.io/static/js/runtime-main.4c0e0884.js.map",
-    "static/js/2.ad768131.chunk.js": "/maitrishah101.github.io/static/js/2.ad768131.chunk.js",
-    "static/js/2.ad768131.chunk.js.map": "/maitrishah101.github.io/static/js/2.ad768131.chunk.js.map",
+    "static/js/2.f4dad9dc.chunk.js": "/maitrishah101.github.io/static/js/2.f4dad9dc.chunk.js",
+    "static/js/2.f4dad9dc.chunk.js.map": "/maitrishah101.github.io/static/js/2.f4dad9dc.chunk.js.map",
     "index.html": "/maitrishah101.github.io/index.html",
-    "precache-manifest.24c2c76a20722f7e16c32dfac6102724.js": "/maitrishah101.github.io/precache-manifest.24c2c76a20722f7e16c32dfac6102724.js",
+    "precache-manifest.e4abd1dd6ac6a4a1e91a73863fd43da3.js": "/maitrishah101.github.io/precache-manifest.e4abd1dd6ac6a4a1e91a73863fd43da3.js",
     "service-worker.js": "/maitrishah101.github.io/service-worker.js",
     "static/css/main.78b5ce33.chunk.css.map": "/maitrishah101.github.io/static/css/main.78b5ce33.chunk.css.map",
-    "static/js/2.ad768131.chunk.js.LICENSE.txt": "/maitrishah101.github.io/static/js/2.ad768131.chunk.js.LICENSE.txt",
+    "static/js/2.f4dad9dc.chunk.js.LICENSE.txt": "/maitrishah101.github.io/static/js/2.f4dad9dc.chunk.js.LICENSE.txt",
     "static/media/instagram.png": "/maitrishah101.github.io/static/media/instagram.bb012c37.png",
     "static/media/linkedin.png": "/maitrishah101.github.io/static/media/linkedin.6a80ee5e.png",
-    "static/media/maitri.png": "/maitrishah101.github.io/static/media/maitri.0b08e2a8.png",
+    "static/media/maitri.png": "/maitrishah101.github.io/static/media/maitri.8c5d328b.png",
     "static/media/twitter.png": "/maitrishah101.github.io/static/media/twitter.3407b8d0.png"
   },
   "entrypoints": [
     "static/js/runtime-main.4c0e0884.js",
-    "static/js/2.ad768131.chunk.js",
+    "static/js/2.f4dad9dc.chunk.js",
     "static/css/main.78b5ce33.chunk.css",
-    "static/js/main.76fa0f5c.chunk.js"
+    "static/js/main.fc9f4116.chunk.js"
   ]
 }
