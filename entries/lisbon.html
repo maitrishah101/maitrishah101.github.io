@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>three days in lisbon — your name</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:wght@300;400;500;600&family=Funnel+Display:wght@300;400;500&family=Geist+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root, [data-theme="noir"] {
+    --bg: #0d0c0b; --bg-soft: #18161a;
+    --text: #ece6d8; --text-soft: #b8b2a8; --text-muted: #807a72;
+    --line: rgba(232, 226, 214, 0.1); --line-hover: rgba(232, 226, 214, 0.22);
+    --accent: #d4b888;
+  }
+  [data-theme="coffee"] {
+    --bg: #ece1ce; --bg-soft: #e2d5bd;
+    --text: #1a0f06; --text-soft: #3a2818; --text-muted: #6a5238;
+    --line: rgba(42, 29, 18, 0.15); --line-hover: rgba(42, 29, 18, 0.32);
+    --accent: #6a3418;
+  }
+  [data-theme="matcha"] {
+    --bg: #f4e2dc; --bg-soft: #ecd0c6;
+    --text: #1c2a0c; --text-soft: #3a4818; --text-muted: #6a5a3a;
+    --line: rgba(28, 42, 12, 0.16); --line-hover: rgba(28, 42, 12, 0.36);
+    --accent: #4a7038;
+  }
+  [data-theme="dusk"] {
+    --bg: #1a1f2e; --bg-soft: #232940;
+    --text: #e0dcf0; --text-soft: #b0a8c8; --text-muted: #807c98;
+    --line: rgba(216, 212, 232, 0.1); --line-hover: rgba(216, 212, 232, 0.24);
+    --accent: #e8b0d4;
+  }
+  /* Cloud — bright white sky with soft blue shadow tones */
+  [data-theme="cloud"] {
+    --bg: #fbfcfe; --bg-soft: #eef3f9;
+    --text: #1a3050; --text-soft: #4a6088; --text-muted: #7088a8;
+    --line: rgba(26, 48, 80, 0.12); --line-hover: rgba(26, 48, 80, 0.28);
+    --accent: #4878b8;
+  }
+
+  /* Chrome — polished, cool grey, metallic accent */
+  [data-theme="chrome"] {
+    --bg: #e8eaed; --bg-soft: #d8dce0;
+    --text: #1a1d22; --text-soft: #3a3e44; --text-muted: #6a6e74;
+    --line: rgba(26, 29, 34, 0.14); --line-hover: rgba(26, 29, 34, 0.3);
+    --accent: #5a6068;
+  }
+  [data-theme="gradient"] {
+    --text: #ffffff;
+    --text-soft: rgba(255, 255, 255, 0.85); --text-muted: rgba(255, 255, 255, 0.6);
+    --line: rgba(255, 255, 255, 0.18); --line-hover: rgba(255, 255, 255, 0.38);
+    --accent: #fff0c8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: 'Funnel Sans', system-ui, sans-serif;
+    font-weight: 400; font-size: 13px; line-height: 1.65; letter-spacing: 0;
+    -webkit-font-smoothing: antialiased;
+    transition: background 0.6s ease, color 0.6s ease;
+    overflow-x: hidden; min-height: 100vh; position: relative;
+  }
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 1; opacity: 0.35;
+  }
+  body[data-theme="gradient"] {
+    background:
+      radial-gradient(ellipse at 20% 10%, #ff8ec8 0%, transparent 45%),
+      radial-gradient(ellipse at 80% 20%, #ffb978 0%, transparent 45%),
+      radial-gradient(ellipse at 70% 75%, #c87ad8 0%, transparent 50%),
+      radial-gradient(ellipse at 20% 80%, #8ec8ff 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, #ff9aa8 0%, transparent 55%),
+      linear-gradient(135deg, #d87ac8, #ff9aa8, #ffc878, #c8c8ff);
+    background-size: 200% 200%, 200% 200%, 200% 200%, 200% 200%, 200% 200%, 200% 200%;
+    animation: gradientShift 18s ease-in-out infinite;
+  }
+  @keyframes gradientShift {
+    0%, 100% { background-position: 0% 0%, 100% 0%, 100% 100%, 0% 100%, 50% 50%, 0% 0%; }
+    33% { background-position: 100% 50%, 0% 100%, 50% 0%, 100% 50%, 0% 50%, 50% 100%; }
+    66% { background-position: 50% 100%, 50% 0%, 0% 50%, 50% 0%, 100% 100%, 100% 50%; }
+  }
+  body[data-theme="gradient"]::before { opacity: 0.15; }
+
+  /* Chrome theme — subtle brushed-metal sheen across the page */
+  body[data-theme="chrome"] {
+    background:
+      linear-gradient(180deg,
+        #f0f2f5 0%,
+        #e4e7eb 35%,
+        #dde0e4 55%,
+        #e8ebef 80%,
+        #d8dce0 100%);
+  }
+  body[data-theme="chrome"]::before { opacity: 0.45; }
+
+  .page {
+    max-width: 560px; margin: 0 auto; padding: 64px 32px 96px;
+    position: relative; z-index: 2;
+  }
+
+  .theme-bar {
+    position: fixed; top: 20px; right: 20px; z-index: 100;
+    display: flex; align-items: center; gap: 6px; padding: 5px;
+    background: var(--bg-soft, rgba(0,0,0,0.3));
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--line); border-radius: 100px;
+    transition: all 0.4s ease;
+  }
+  body[data-theme="gradient"] .theme-bar { background: rgba(255,255,255,0.15); }
+  body[data-theme="cloud"] .theme-bar { background: rgba(255, 255, 255, 0.75); }
+  body[data-theme="chrome"] .theme-bar { background: rgba(232, 234, 237, 0.85); }
+
+  .theme-btn {
+    width: 20px; height: 20px; border-radius: 50%;
+    border: none; cursor: pointer; padding: 0;
+    margin: 0;
+    appearance: none;
+    -webkit-appearance: none;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    position: relative;
+    flex-shrink: 0;
+  }
+  .theme-btn:hover { transform: scale(1.15); }
+  .theme-btn[data-active="true"] {
+    box-shadow: 0 0 0 2px transparent, 0 0 0 2.2px var(--line-hover);
+    opacity: 1;
+  }
+  .theme-btn:not([data-active="true"]) {
+    opacity: 0.6;
+  }
+  .theme-btn:not([data-active="true"]):hover {
+    opacity: 1;
+  }
+  body[data-theme="gradient"] .theme-btn[data-active="true"] {
+    box-shadow: 0 0 0 2px transparent, 0 0 0 2.2px rgba(255,255,255,0.4);
+  }
+  .theme-btn::after {
+    content: attr(data-hotkey);
+    position: absolute;
+    bottom: -18px; left: 50%; transform: translateX(-50%);
+    font-family: 'Funnel Sans', system-ui, sans-serif; font-size: 8px;
+    color: var(--text-muted);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+  }
+  .theme-bar:hover .theme-btn::after { opacity: 1; }
+
+  .theme-btn[data-theme-target="noir"] { background: #0d0c0b; }
+  .theme-btn[data-theme-target="coffee"] { background: linear-gradient(135deg, #ece1ce, #6a3418); }
+  .theme-btn[data-theme-target="matcha"] { background: linear-gradient(135deg, #f4e2dc, #c84878, #4a7038); }
+  .theme-btn[data-theme-target="dusk"] { background: linear-gradient(135deg, #1a1f2e, #e8b0d4); }
+  .theme-btn[data-theme-target="cloud"] { background: linear-gradient(135deg, #fbfcfe, #4878b8); }
+  .theme-btn[data-theme-target="chrome"] { background: linear-gradient(135deg, #f4f6f8, #8a9098, #4a4e54); }
+  .theme-btn[data-theme-target="gradient"] {
+    background:
+      radial-gradient(circle at 30% 30%, #ff8ec8, transparent 50%),
+      radial-gradient(circle at 70% 70%, #ffb978, transparent 50%),
+      linear-gradient(135deg, #c87ad8, #ff9aa8, #ffc878);
+  }
+
+  .theme-label {
+    font-family: 'Funnel Sans', system-ui, sans-serif; font-size: 10px;
+    color: var(--text-muted); padding: 0 8px 0 10px;
+    
+  }
+
+  .back {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: 'Funnel Sans', system-ui, sans-serif; font-size: 12px;
+    color: var(--text-muted); text-decoration: none;
+    margin-bottom: 56px; transition: color 0.2s ease;
+  }
+  .back:hover { color: var(--accent); }
+  .back .arrow {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .back:hover .arrow { transform: translateX(-3px); }
+
+  .entry-meta {
+    font-family: 'Funnel Sans', system-ui, sans-serif; font-size: 12px;
+    color: var(--text-muted); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .entry-meta::before {
+    content: ''; width: 20px; height: 1px; background: var(--accent);
+  }
+  .entry-meta .dot { color: var(--text-muted); opacity: 0.6; }
+
+  h1 {
+    font-family: 'Funnel Sans', system-ui, sans-serif; font-size: 16px;
+    line-height: 1.55; font-weight: 500; color: var(--text);
+    margin-bottom: 32px; max-width: 480px;
+  }
+  h1 .accent { color: var(--accent); }
+
+  article p {
+    font-family: 'Funnel Sans', system-ui, sans-serif; font-size: 13px;
+    line-height: 1.75; color: var(--text-soft);
+    margin-bottom: 18px; max-width: 480px;
+  }
+  article p .accent { color: var(--accent); }
+  article p:first-of-type { color: var(--text); }
+
+  article h2 {
+    font-family: 'Funnel Sans', system-ui, sans-serif; font-size: 13px;
+    font-weight: 500; color: var(--text);
+    margin-top: 40px; margin-bottom: 12px;
+  }
+  article h2::before { content: '§ '; color: var(--accent); }
+
+  .pull {
+    margin: 28px 0; padding: 0 0 0 16px;
+    border-left: 1px solid var(--accent);
+    font-family: 'Funnel Sans', system-ui, sans-serif; font-size: 13px;
+    line-height: 1.7; color: var(--text); max-width: 460px;
+  }
+  .pull .caption {
+    display: block; margin-top: 8px; font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  .figure { margin: 32px 0; max-width: 480px; }
+  .figure-img {
+    width: 100%; aspect-ratio: 4/3;
+    background: var(--bg-soft); border: 1px solid var(--line);
+    position: relative; overflow: hidden;
+  }
+  .figure-1 .figure-img {
+    background:
+      linear-gradient(180deg, #f4c896 0%, #e8a878 25%, #c87858 55%, #6a4838 85%, #2a1812 100%);
+  }
+  .figure-1 .figure-img::before {
+    content: ''; position: absolute;
+    bottom: 20%; left: 0; right: 0; height: 35%;
+    background:
+      linear-gradient(180deg, transparent 0%, rgba(20,12,8,0.5) 100%),
+      repeating-linear-gradient(90deg,
+        rgba(40,24,16,0.7) 0px 14px,
+        transparent 14px 22px,
+        rgba(50,28,18,0.55) 22px 36px,
+        transparent 36px 48px);
+  }
+  .figure-1 .figure-img::after {
+    content: ''; position: absolute;
+    top: 22%; right: 18%; width: 22px; height: 22px;
+    background: #f8e0c0; border-radius: 50%;
+    box-shadow: 0 0 24px rgba(248,224,192,0.6);
+  }
+  .figure-2 .figure-img {
+    background: linear-gradient(180deg, #e8c4a8 0%, #b88858 50%, #6a4828 100%);
+  }
+  .figure-2 .figure-img::before {
+    content: ''; position: absolute;
+    inset: 30% 0 0 0;
+    background:
+      repeating-linear-gradient(45deg,
+        rgba(168,72,40,0.7) 0px 8px,
+        rgba(140,56,30,0.7) 8px 16px);
+    clip-path: polygon(0 30%, 20% 0, 35% 35%, 55% 5%, 75% 40%, 100% 10%, 100% 100%, 0 100%);
+  }
+  .figure-caption {
+    font-family: 'Funnel Sans', system-ui, sans-serif; font-size: 11px;
+    color: var(--text-muted); margin-top: 8px; line-height: 1.5;
+  }
+  .figure-caption .num { color: var(--accent); margin-right: 4px; }
+
+  .end-mark {
+    margin: 40px 0 32px;
+    font-family: 'Funnel Sans', system-ui, sans-serif; color: var(--accent); font-size: 13px;
+  }
+
+  .back-home-bottom {
+    margin: 40px 0;
+  }
+  .back-home-bottom a {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: 'Funnel Sans', system-ui, sans-serif; font-size: 12px;
+    color: var(--text-muted); text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .back-home-bottom a:hover { color: var(--accent); }
+  .back-home-bottom a .arrow {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .back-home-bottom a:hover .arrow { transform: translateX(-3px); }
+
+  .siblings {
+    margin-top: 32px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  }
+  .sibling { text-decoration: none; color: inherit; }
+  .sibling-label {
+    font-family: 'Funnel Sans', system-ui, sans-serif; font-size: 11px;
+    color: var(--text-muted); margin-bottom: 4px; display: block;
+    transition: color 0.2s ease;
+  }
+  .sibling-title {
+    font-family: 'Funnel Sans', system-ui, sans-serif; font-size: 12px;
+    color: var(--text); line-height: 1.45;
+    transition: color 0.2s ease;
+  }
+  .sibling:hover .sibling-title,
+  .sibling:hover .sibling-label { color: var(--accent); }
+  .sibling.next { text-align: right; }
+
+  .post-foot {
+    margin-top: 48px; padding-top: 18px;
+    border-top: 1px solid var(--line);
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-family: 'Funnel Sans', system-ui, sans-serif; font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  .smile {
+    font-size: 16px;
+    margin-left: 2px;
+    vertical-align: -2px;
+  }
+  .tw {
+    display: inline-block;
+    animation: twinkle 2.4s ease-in-out infinite;
+  }
+  .tw:nth-child(1) { animation-delay: 0s; }
+  .tw:nth-child(2) { animation-delay: 0.5s; }
+  .tw:nth-child(3) { animation-delay: 1s; }
+  .tw:nth-child(4) { animation-delay: 1.5s; }
+  @keyframes twinkle {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.15; transform: scale(0.8); }
+  }
+
+  @media (max-width: 600px) {
+    .page { padding: 40px 22px 64px; }
+    .theme-bar { top: 14px; right: 14px; padding: 4px; gap: 5px; }
+    .theme-label { display: none; }
+    .theme-btn { width: 18px; height: 18px; }
+    .back { margin-bottom: 36px; }
+    h1 { font-size: 15px; }
+    article p, .pull { font-size: 12.5px; }
+    .siblings { grid-template-columns: 1fr; gap: 12px; }
+    .sibling.next { text-align: left; }
+    .post-foot { flex-direction: column; gap: 4px; }
+  }
+
+  .theme-transition { animation: themeFade 0.5s ease; }
+  @keyframes themeFade { from { opacity: 0.7; } to { opacity: 1; } }
+</style>
+</head>
+<body data-theme="coffee">
+
+  <div class="theme-bar">
+    <span class="theme-label" id="theme-name">coffee shop</span>
+    <button class="theme-btn" data-theme-target="coffee" data-hotkey="1" title="coffee shop (press 1)"></button>
+    <button class="theme-btn" data-theme-target="chrome" data-hotkey="2" title="chrome (press 2)"></button>
+    <button class="theme-btn" data-theme-target="cloud" data-hotkey="3" title="cloud (press 3)"></button>
+    <button class="theme-btn" data-theme-target="dusk" data-hotkey="4" title="dusk (press 4)"></button>
+    <button class="theme-btn" data-theme-target="matcha" data-hotkey="5" title="strawberry matcha (press 5)"></button>
+    <button class="theme-btn" data-theme-target="gradient" data-hotkey="6" title="gradient (press 6)"></button>
+    <button class="theme-btn" data-theme-target="noir" data-hotkey="7" title="noir (press 7)"></button>
+</div>
+
+  <main class="page">
+
+    <a href="../index.html" class="back">
+      <span class="arrow">←</span>
+      <span>back home</span>
+    </a>
+
+    <div class="entry-meta">
+      <span>2026.04.18</span>
+      <span class="dot">·</span>
+      <span>travel</span>
+      <span class="dot">·</span>
+      <span>8 min read</span>
+    </div>
+
+    <h1>three days in lisbon, <span class="accent">alone &amp; on purpose</span></h1>
+
+    <article>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. The flight was cheap and I had been carrying around an idea of <span class="accent">going alone</span> for months, the way you carry a small stone in your pocket without quite knowing why.</p>
+
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.</p>
+
+      <h2>day one — arriving</h2>
+
+      <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. The taxi from the airport smelled faintly of <span class="accent">someone else's cologne</span> and the driver did not speak, which felt correct.</p>
+
+      <div class="figure figure-1">
+        <div class="figure-img"></div>
+        <p class="figure-caption"><span class="num">fig. 01</span>golden hour from the apartment window, day one. the light here arrives differently.</p>
+      </div>
+
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+
+      <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. I walked until my feet hurt and then walked a little more.</p>
+
+      <div class="pull">
+        "there is a particular kind of quiet that you can only find <span class="accent">in a city where no one knows your name.</span>"
+        <span class="caption">— note to self, day one, around midnight</span>
+      </div>
+
+      <h2>day two — getting lost on purpose</h2>
+
+      <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit. I found a <span class="accent">small café</span> that did the kind of matcha that doesn't try too hard. I went back twice in three days, which felt like a relationship.</p>
+
+      <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
+
+      <div class="figure figure-2">
+        <div class="figure-img"></div>
+        <p class="figure-caption"><span class="num">fig. 02</span>rooftops from the alfama, day two. terracotta as far as you can see.</p>
+      </div>
+
+      <p>Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
+
+      <h2>day three — what i brought back</h2>
+
+      <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus. A small <span class="accent">ceramic bowl</span>, hand-thrown, that I bought from a man who would not let me take his picture. Two paperbacks in a language I cannot read.</p>
+
+      <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. The realization, somewhere on the second night, that <span class="accent">solitude has a different texture</span> in Portuguese.</p>
+
+      <p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat. I am writing this from a coffee shop in [city], two weeks later, and I am already planning to go back.</p>
+    </article>
+
+    <div class="end-mark">— end</div>
+
+    <div class="back-home-bottom">
+      <a href="../index.html">
+        <span class="arrow">←</span>
+        <span>back home</span>
+      </a>
+    </div>
+
+    <div class="siblings">
+      <a href="lisbon.html" class="sibling prev">
+        <span class="sibling-label">← previous</span>
+        <span class="sibling-title">the gradient that started everything</span>
+      </a>
+      <a href="lisbon.html" class="sibling next">
+        <span class="sibling-label">next →</span>
+        <span class="sibling-title">a receipt of what i bought into in april</span>
+      </a>
+    </div>
+
+    <div class="post-foot">
+      <div>maitri, 2026 <span class="tw">⋆</span><span class="tw">.</span><span class="tw">˚</span><span class="tw">⊹</span></div>
+      <div>thank you for reading <span class="smile">☺︎</span></div>
+    </div>
+
+  </main>
+
+<script>
+  const themes = {
+    'coffee': 'coffee shop', 'noir': 'noir', 'chrome': 'chrome',
+    'cloud': 'cloud', 'dusk': 'dusk', 'matcha': 'strawberry matcha',
+    'gradient': 'gradient'
+  };
+  const hotkeyMap = {
+    '1': 'coffee', '2': 'chrome', '3': 'cloud',
+    '4': 'dusk', '5': 'matcha', '6': 'gradient', '7': 'noir'
+  };
+  const body = document.body;
+  const buttons = document.querySelectorAll('.theme-btn');
+  const themeName = document.getElementById('theme-name');
+
+  function setTheme(theme) {
+    body.setAttribute('data-theme', theme);
+    body.classList.remove('theme-transition');
+    void body.offsetWidth;
+    body.classList.add('theme-transition');
+    themeName.textContent = themes[theme] || theme;
+    buttons.forEach(btn => {
+      btn.setAttribute('data-active', btn.dataset.themeTarget === theme);
+    });
+    try { localStorage.setItem('preferred-theme', theme); } catch(e) {}
+  }
+  try {
+    const saved = localStorage.getItem('preferred-theme');
+    if (saved && themes[saved]) setTheme(saved); else setTheme('coffee');
+  } catch(e) { setTheme('coffee'); }
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => setTheme(btn.dataset.themeTarget));
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    if (hotkeyMap[e.key]) {
+      setTheme(hotkeyMap[e.key]);
+    }
+  });
+</script>
+
+</body>
+</html>

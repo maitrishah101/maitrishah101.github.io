@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>hall of fame — maitri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:wght@300;400;500;600&family=Funnel+Display:wght@300;400;500&family=Geist+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root, [data-theme="noir"] {
+    --bg: #0d0c0b; --bg-soft: #18161a;
+    --text: #ece6d8; --text-soft: #b8b2a8; --text-muted: #807a72;
+    --line: rgba(232, 226, 214, 0.1); --line-hover: rgba(232, 226, 214, 0.22);
+    --accent: #d4b888;
+  }
+  [data-theme="coffee"] {
+    --bg: #ece1ce; --bg-soft: #e2d5bd;
+    --text: #1a0f06; --text-soft: #3a2818; --text-muted: #6a5238;
+    --line: rgba(42, 29, 18, 0.15); --line-hover: rgba(42, 29, 18, 0.32);
+    --accent: #6a3418;
+  }
+  [data-theme="matcha"] {
+    --bg: #f4e2dc; --bg-soft: #ecd0c6;
+    --text: #1c2a0c; --text-soft: #3a4818; --text-muted: #6a5a3a;
+    --line: rgba(28, 42, 12, 0.16); --line-hover: rgba(28, 42, 12, 0.36);
+    --accent: #4a7038;
+  }
+  [data-theme="dusk"] {
+    --bg: #1a1f2e; --bg-soft: #232940;
+    --text: #e0dcf0; --text-soft: #b0a8c8; --text-muted: #807c98;
+    --line: rgba(216, 212, 232, 0.1); --line-hover: rgba(216, 212, 232, 0.24);
+    --accent: #e8b0d4;
+  }
+  /* Cloud — bright white sky with soft blue shadow tones */
+  [data-theme="cloud"] {
+    --bg: #fbfcfe; --bg-soft: #eef3f9;
+    --text: #1a3050; --text-soft: #4a6088; --text-muted: #7088a8;
+    --line: rgba(26, 48, 80, 0.12); --line-hover: rgba(26, 48, 80, 0.28);
+    --accent: #4878b8;
+  }
+
+  /* Chrome — polished, cool grey, metallic accent */
+  [data-theme="chrome"] {
+    --bg: #e8eaed; --bg-soft: #d8dce0;
+    --text: #1a1d22; --text-soft: #3a3e44; --text-muted: #6a6e74;
+    --line: rgba(26, 29, 34, 0.14); --line-hover: rgba(26, 29, 34, 0.3);
+    --accent: #5a6068;
+  }
+  [data-theme="gradient"] {
+    --text: #ffffff;
+    --text-soft: rgba(255, 255, 255, 0.85); --text-muted: rgba(255, 255, 255, 0.6);
+    --line: rgba(255, 255, 255, 0.18); --line-hover: rgba(255, 255, 255, 0.38);
+    --accent: #fff0c8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: 'Funnel Sans', system-ui, sans-serif;
+    font-weight: 400; font-size: 13px; line-height: 1.65; letter-spacing: 0;
+    -webkit-font-smoothing: antialiased;
+    transition: background 0.6s ease, color 0.6s ease;
+    overflow-x: hidden; min-height: 100vh; position: relative;
+  }
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 1; opacity: 0.35;
+  }
+
+  body[data-theme="gradient"] {
+    background:
+      radial-gradient(ellipse at 20% 10%, #ff8ec8 0%, transparent 45%),
+      radial-gradient(ellipse at 80% 20%, #ffb978 0%, transparent 45%),
+      radial-gradient(ellipse at 70% 75%, #c87ad8 0%, transparent 50%),
+      radial-gradient(ellipse at 20% 80%, #8ec8ff 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, #ff9aa8 0%, transparent 55%),
+      linear-gradient(135deg, #d87ac8, #ff9aa8, #ffc878, #c8c8ff);
+    background-size: 200% 200%, 200% 200%, 200% 200%, 200% 200%, 200% 200%, 200% 200%;
+    animation: gradientShift 18s ease-in-out infinite;
+  }
+  @keyframes gradientShift {
+    0%, 100% { background-position: 0% 0%, 100% 0%, 100% 100%, 0% 100%, 50% 50%, 0% 0%; }
+    33% { background-position: 100% 50%, 0% 100%, 50% 0%, 100% 50%, 0% 50%, 50% 100%; }
+    66% { background-position: 50% 100%, 50% 0%, 0% 50%, 50% 0%, 100% 100%, 100% 50%; }
+  }
+  body[data-theme="gradient"]::before { opacity: 0.15; }
+
+  /* Chrome theme — subtle brushed-metal sheen across the page */
+  body[data-theme="chrome"] {
+    background:
+      linear-gradient(180deg,
+        #f0f2f5 0%,
+        #e4e7eb 35%,
+        #dde0e4 55%,
+        #e8ebef 80%,
+        #d8dce0 100%);
+  }
+  body[data-theme="chrome"]::before { opacity: 0.45; }
+
+  .page {
+    max-width: 560px; margin: 0 auto; padding: 64px 32px 96px;
+    position: relative; z-index: 2;
+  }
+
+  .theme-bar {
+    position: fixed; top: 20px; right: 20px; z-index: 100;
+    display: flex; align-items: center; gap: 6px; padding: 5px;
+    background: var(--bg-soft, rgba(0,0,0,0.3));
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--line); border-radius: 100px;
+    transition: all 0.4s ease;
+  }
+  body[data-theme="gradient"] .theme-bar { background: rgba(255,255,255,0.15); }
+  body[data-theme="cloud"] .theme-bar { background: rgba(255, 255, 255, 0.75); }
+  body[data-theme="chrome"] .theme-bar { background: rgba(232, 234, 237, 0.85); }
+
+  .theme-btn {
+    width: 20px; height: 20px; border-radius: 50%;
+    border: none; cursor: pointer; padding: 0;
+    margin: 0;
+    appearance: none;
+    -webkit-appearance: none;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    position: relative;
+    flex-shrink: 0;
+  }
+  .theme-btn:hover { transform: scale(1.15); }
+  .theme-btn[data-active="true"] {
+    box-shadow: 0 0 0 2px transparent, 0 0 0 2.2px var(--line-hover);
+    opacity: 1;
+  }
+  .theme-btn:not([data-active="true"]) {
+    opacity: 0.6;
+  }
+  .theme-btn:not([data-active="true"]):hover {
+    opacity: 1;
+  }
+  body[data-theme="gradient"] .theme-btn[data-active="true"] {
+    box-shadow: 0 0 0 2px transparent, 0 0 0 2.2px rgba(255,255,255,0.4);
+  }
+  .theme-btn::after {
+    content: attr(data-hotkey);
+    position: absolute;
+    bottom: -18px; left: 50%; transform: translateX(-50%);
+    font-family: 'Funnel Sans', system-ui, sans-serif; font-size: 8px;
+    color: var(--text-muted);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+  }
+  .theme-bar:hover .theme-btn::after { opacity: 1; }
+
+  .theme-btn[data-theme-target="noir"] { background: #0d0c0b; }
+  .theme-btn[data-theme-target="coffee"] { background: linear-gradient(135deg, #ece1ce, #6a3418); }
+  .theme-btn[data-theme-target="matcha"] { background: linear-gradient(135deg, #f4e2dc, #c84878, #4a7038); }
+  .theme-btn[data-theme-target="dusk"] { background: linear-gradient(135deg, #1a1f2e, #e8b0d4); }
+  .theme-btn[data-theme-target="cloud"] { background: linear-gradient(135deg, #fbfcfe, #4878b8); }
+  .theme-btn[data-theme-target="chrome"] { background: linear-gradient(135deg, #f4f6f8, #8a9098, #4a4e54); }
+  .theme-btn[data-theme-target="gradient"] {
+    background:
+      radial-gradient(circle at 30% 30%, #ff8ec8, transparent 50%),
+      radial-gradient(circle at 70% 70%, #ffb978, transparent 50%),
+      linear-gradient(135deg, #c87ad8, #ff9aa8, #ffc878);
+  }
+
+  .theme-label {
+    font-family: 'Funnel Sans', system-ui, sans-serif; font-size: 10px;
+    color: var(--text-muted); padding: 0 8px 0 10px;
+    
+  }
+
+  .back {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: 'Funnel Sans', system-ui, sans-serif; font-size: 12px;
+    color: var(--text-muted); text-decoration: none;
+    margin-bottom: 56px; transition: color 0.2s ease;
+  }
+  .back:hover { color: var(--accent); }
+  .back .arrow {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .back:hover .arrow { transform: translateX(-3px); }
+
+  .entry-meta {
+    font-family: 'Funnel Sans', system-ui, sans-serif; font-size: 12px;
+    color: var(--text-muted); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .entry-meta::before {
+    content: ''; width: 20px; height: 1px; background: var(--accent);
+  }
+  .entry-meta .dot { color: var(--text-muted); opacity: 0.6; }
+
+  h1 {
+    font-family: 'Funnel Sans', system-ui, sans-serif; font-size: 16px;
+    line-height: 1.55; font-weight: 500; color: var(--text);
+    margin-bottom: 16px; max-width: 480px;
+  }
+  h1 .accent { color: var(--accent); }
+
+  .intro-text {
+    font-family: 'Funnel Sans', system-ui, sans-serif; font-size: 13px;
+    line-height: 1.75; color: var(--text-soft);
+    margin-bottom: 40px; max-width: 480px;
+  }
+  .intro-text .accent { color: var(--accent); }
+
+  /* CONTENT SECTIONS */
+  .content-section { margin-top: 32px; }
+  .content-section:first-of-type { margin-top: 0; }
+
+  .content-section-header {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 12px;
+  }
+
+  .content-section-title {
+    font-family: 'Funnel Sans', system-ui, sans-serif; font-size: 12px;
+    font-weight: 500; color: var(--text);
+  }
+  .content-section-title::before { content: '§ '; color: var(--accent); }
+
+  .content-section-count {
+    font-family: 'Funnel Sans', system-ui, sans-serif; font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  .section-header {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 4px;
+  }
+  .section-title {
+    font-family: 'Funnel Sans', system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-muted);
+  }
+
+  .content-list {
+    display: flex; flex-direction: column;
+    border-top: 1px solid var(--line);
+    padding-top: 4px;
+  }
+
+  .content-item {
+    display: grid; grid-template-columns: 1fr auto;
+    gap: 24px; align-items: baseline;
+    padding: 5px 0;
+    text-decoration: none; color: inherit;
+    transition: padding 0.2s ease;
+  }
+  .content-item:hover {
+    padding-left: 6px;
+  }
+  .content-item:hover .item-title { color: var(--accent); }
+  .content-item:hover .arrow {
+    opacity: 1; color: var(--accent); transform: translate(2px, -2px);
+  }
+
+  .item-title {
+    font-family: 'Funnel Sans', system-ui, sans-serif; font-size: 13px;
+    line-height: 1.45; color: var(--text); font-weight: 400;
+    display: flex; align-items: center; gap: 6px;
+    transition: color 0.2s ease;
+  }
+  .item-title .arrow {
+    font-family: 'Funnel Sans', system-ui, sans-serif; font-size: 11px;
+    color: var(--text-muted); opacity: 0.6;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .item-author {
+    font-family: 'Funnel Sans', system-ui, sans-serif; font-size: 11px;
+    color: var(--text-muted); font-style: normal;
+    margin-left: 6px;
+  }
+  .item-note {
+    font-family: 'Funnel Sans', system-ui, sans-serif; font-size: 12px;
+    color: var(--text-soft); line-height: 1.6;
+    margin-top: 4px; max-width: 95%;
+  }
+  .item-note .accent { color: var(--accent); }
+
+  .end-mark {
+    margin: 56px 0 32px;
+    font-family: 'Funnel Sans', system-ui, sans-serif; color: var(--accent); font-size: 13px;
+  }
+
+  .back-home-bottom {
+    margin: 40px 0;
+  }
+  .back-home-bottom a {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: 'Funnel Sans', system-ui, sans-serif; font-size: 12px;
+    color: var(--text-muted); text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .back-home-bottom a:hover { color: var(--accent); }
+  .back-home-bottom a .arrow {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .back-home-bottom a:hover .arrow { transform: translateX(-3px); }
+
+  .post-foot {
+    margin-top: 32px; padding-top: 18px;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-family: 'Funnel Sans', system-ui, sans-serif; font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  .smile {
+    font-size: 16px;
+    margin-left: 2px;
+    vertical-align: -2px;
+  }
+  .tw {
+    display: inline-block;
+    animation: twinkle 2.4s ease-in-out infinite;
+  }
+  .tw:nth-child(1) { animation-delay: 0s; }
+  .tw:nth-child(2) { animation-delay: 0.5s; }
+  .tw:nth-child(3) { animation-delay: 1s; }
+  .tw:nth-child(4) { animation-delay: 1.5s; }
+  @keyframes twinkle {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.15; transform: scale(0.8); }
+  }
+
+  @media (max-width: 600px) {
+    .page { padding: 40px 22px 64px; }
+    .theme-bar { top: 14px; right: 14px; padding: 4px; gap: 5px; }
+    .theme-label { display: none; }
+    .theme-btn { width: 18px; height: 18px; }
+    .back { margin-bottom: 36px; }
+    h1 { font-size: 15px; }
+    .intro-text { font-size: 12.5px; }
+    .item-title { font-size: 12.5px; }
+    .item-note { font-size: 11.5px; }
+    .post-foot { flex-direction: column; gap: 4px; }
+  }
+
+  .theme-transition { animation: themeFade 0.5s ease; }
+  @keyframes themeFade { from { opacity: 0.7; } to { opacity: 1; } }
+</style>
+</head>
+<body data-theme="coffee">
+
+  <div class="theme-bar">
+    <span class="theme-label" id="theme-name">coffee shop</span>
+    <button class="theme-btn" data-theme-target="coffee" data-hotkey="1" title="coffee shop (press 1)"></button>
+    <button class="theme-btn" data-theme-target="chrome" data-hotkey="2" title="chrome (press 2)"></button>
+    <button class="theme-btn" data-theme-target="cloud" data-hotkey="3" title="cloud (press 3)"></button>
+    <button class="theme-btn" data-theme-target="dusk" data-hotkey="4" title="dusk (press 4)"></button>
+    <button class="theme-btn" data-theme-target="matcha" data-hotkey="5" title="strawberry matcha (press 5)"></button>
+    <button class="theme-btn" data-theme-target="gradient" data-hotkey="6" title="gradient (press 6)"></button>
+    <button class="theme-btn" data-theme-target="noir" data-hotkey="7" title="noir (press 7)"></button>
+</div>
+
+  <main class="page">
+
+    <a href="../index.html" class="back">
+      <span class="arrow">←</span>
+      <span>back home</span>
+    </a>
+
+    <h1><span class="accent">hall of fame</span></h1>
+
+    <p class="intro-text">a small archive of things that popped off</p>
+
+    <section class="content-section">
+      <div class="section-header">
+        <span class="section-title">tweets</span>
+      </div>
+      <div class="content-list">
+
+        <a class="content-item" href="https://x.com/maitrishahhhh/status/1488183307422474242" target="_blank" rel="noopener">
+          <div>
+            <div class="item-title">
+              my first digital product
+              <span class="item-author">— jan 2022</span>
+              <span class="arrow">↗</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="content-item" href="https://x.com/maitrishahhhh/status/1482080705345560579" target="_blank" rel="noopener">
+          <div>
+            <div class="item-title">
+              the first gradient post
+              <span class="item-author">— jan 2022</span>
+              <span class="arrow">↗</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="content-item" href="https://x.com/maitrishahhhh/status/1768636769602347093" target="_blank" rel="noopener">
+          <div>
+            <div class="item-title">
+              what makes me feel wealthy
+              <span class="item-author">— march 2024</span>
+              <span class="arrow">↗</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="content-item" href="https://mashable.com/article/wordle-memes-twitter" target="_blank" rel="noopener">
+          <div>
+            <div class="item-title">
+              not a wordle just github commits — featured in mashable
+              <span class="item-author">— jan 2022</span>
+              <span class="arrow">↗</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <div class="post-foot">
+      <div>maitri, 2026 <span class="tw">⋆</span><span class="tw">.</span><span class="tw">˚</span><span class="tw">⊹</span></div>
+      <div>1% better, every day <span class="smile">☺︎</span></div>
+    </div>
+
+  </main>
+
+<script>
+  const themes = {
+    'coffee': 'coffee shop', 'noir': 'noir', 'chrome': 'chrome',
+    'cloud': 'cloud', 'dusk': 'dusk', 'matcha': 'strawberry matcha',
+    'gradient': 'gradient'
+  };
+  const hotkeyMap = {
+    '1': 'coffee', '2': 'chrome', '3': 'cloud',
+    '4': 'dusk', '5': 'matcha', '6': 'gradient', '7': 'noir'
+  };
+  const body = document.body;
+  const buttons = document.querySelectorAll('.theme-btn');
+  const themeName = document.getElementById('theme-name');
+
+  function setTheme(theme) {
+    body.setAttribute('data-theme', theme);
+    body.classList.remove('theme-transition');
+    void body.offsetWidth;
+    body.classList.add('theme-transition');
+    themeName.textContent = themes[theme] || theme;
+    buttons.forEach(btn => {
+      btn.setAttribute('data-active', btn.dataset.themeTarget === theme);
+    });
+    try { localStorage.setItem('preferred-theme', theme); } catch(e) {}
+  }
+  try {
+    const saved = localStorage.getItem('preferred-theme');
+    if (saved && themes[saved]) setTheme(saved); else setTheme('coffee');
+  } catch(e) { setTheme('coffee'); }
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => setTheme(btn.dataset.themeTarget));
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    if (hotkeyMap[e.key]) {
+      setTheme(hotkeyMap[e.key]);
+    }
+  });
+</script>
+
+</body>
+</html>
